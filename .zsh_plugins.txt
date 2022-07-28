@@ -1,0 +1,60 @@
+#
+# .zsh_plugins.txt
+#
+
+### prompt plugins
+sindresorhus/pure kind:fpath
+
+### benchmarking plugins
+romkatv/zsh-bench kind:path
+
+### oh-my-zsh plugins
+ohmyzsh/ohmyzsh path:lib/clipboard.zsh
+ohmyzsh/ohmyzsh path:plugins/extract
+ohmyzsh/ohmyzsh path:plugins/magic-enter
+
+### environment plugins
+# - belak/zsh-utils path:environment
+# - sorin-ionescu/prezto path:modules/environment
+mattmc3/zephyr path:plugins/environment
+
+### terminal plugins
+# - zimfw/termtitle
+# - sorin-ionescu/prezto path:modules/terminal
+olets/zsh-window-title
+
+### editor plugins
+# - belak/zsh-utils path:editor
+# - sorin-ionescu/prezto path:modules/editor
+mattmc3/zephyr path:plugins/editor
+
+### history plugins
+# - belak/zsh-utils path:history
+# - sorin-ionescu/prezto path:modules/history
+mattmc3/zephyr path:plugins/history
+
+### directory plugins
+# - belak/zsh-utils path:directory
+# - sorin-ionescu/prezto path:modules/directory
+mattmc3/zephyr path:plugins/directory
+
+### color plugins
+# - sorin-ionescu/prezto path:modules/spectrum
+mattmc3/zephyr path:plugins/colors
+
+### completion plugins
+# - belak/zsh-utils path:completion
+# - sorin-ionescu/prezto path:modules/completion
+zsh-users/zsh-completions
+mattmc3/zephyr path:plugins/completions
+
+### fish-like lazy-load functions
+mattmc3/zfunctions
+
+### fish-like conf.d
+mattmc3/zshrc.d
+
+### fish-like core plugins
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-history-substring-search
