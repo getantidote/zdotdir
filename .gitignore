@@ -1,3 +1,7 @@
+#
+# .gitignore
+#
+
 .antidote/
 .zplugins/
 .zcompcache/
