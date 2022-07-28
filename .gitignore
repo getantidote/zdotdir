@@ -1,0 +1,18 @@
+#
+# .gitignore
+#
+
+.antidote/
+.zplugins/
+.zcompcache/
+.zsh_sessions/
+.zcompdump*
+.zdirs
+.zsh_history
+.zsh_plugins.zsh
+*.bak
+*.local
+*.local.zsh
+*.zwc
+*.zwc.old
+~*
