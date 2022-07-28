@@ -13,6 +13,7 @@ A sample antidote `.zsh_plugins.txt` file that bundles plugins with the followin
 - History substring searching
 - Syntax highlighting
 - <kbd>TAB</kbd> completions
+- The popular Pure prompt
 - A functions directory for lazy-loaded functions
 - A zshrc.d directory for auto-sourced configs
 - A completions directory for user added completions
