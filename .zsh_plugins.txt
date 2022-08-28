@@ -51,10 +51,10 @@ mattmc3/zephyr path:plugins/completions
 ### fish-like lazy-load functions
 mattmc3/zfunctions
 
-### fish-like conf.d
-mattmc3/zshrc.d
-
 ### fish-like core plugins
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-history-substring-search
+
+### fish-like conf.d
+mattmc3/zshrc.d
