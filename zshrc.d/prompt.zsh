@@ -5,5 +5,8 @@
 # expand parameters in prompt variables
 setopt PROMPT_SUBST
 
-autoload -Uz promptinit && promptinit
+# If one of your plugins didn't run promptinit, you'll have to uncomment this line:
+#autoload -Uz promptinit && promptinit
+
+# Set the prompt
 prompt pure

@@ -2,59 +2,143 @@
 # .zsh_plugins.txt
 #
 
-### prompt plugins
+### Overview
+#
+# The `.zsh_plugins.txt` file is used by antidote to configure Zsh bundles. Bundles are
+# just a fancy way of referring to Zsh utilities, frameworks, prompts, or plugins.
+# `.zsh_plugins.txt` is used by antidote to generate a static `.zsh_plugins.zsh` file,
+# which can then be sourced in your `.zshrc`. You can use this file as a starting point
+# for your own config. Strip out instructional comments (ie: lines beginning with a '#')
+# and any plugins you don't need, then add what you like and make it yours!
+#
+# NOTE: Order matters in this file! Some bundles need to be last, and others are
+# prerequisites. Read the documentation for the plugins you use to ensure proper
+# configuration.
+#
+###
+
+### Prompts
+#
+# You can make certain themes available to the built-in Zsh prompt command using the
+# `kind:fpath` annotation. A theme is not active for the prompt until this command is
+# run:
+#
+#   autoload -Uz promptinit && promptinit
+#   prompt promptname
+#
+###
 sindresorhus/pure kind:fpath
 
-### benchmarking plugins
+
+### Completions
+#
+# You may want to add some additional completions to Zsh. Completions look in your fpath
+# for completion functions (eg: functions named with a leading underscore). You need to
+# add any supplemental completions to your fpath prior to running `compinit`. In the
+# Frameworks section below, we'll handle compinit, or you could chose to run it
+# yourself in your `.zshrc`:
+#
+#   autoload -Uz compinit && compinit
+#
+# This is a popular plugin for adding supplemental completions. We combine the `path:`
+# and `kind:fpath` annotations here:
+#
+###
+zsh-users/zsh-completions path:src kind:fpath
+
+
+### Utilities
+#
+# Utilities aren't traditional Zsh plugins - they aren't sourced Zsh scripts. Instead
+# they provide commands that can be executed from your terminal session. One good
+# example is zsh-bench, which is a utility that benchmarks your Zsh config. Utility
+# bundles can often be made available simply with the `kind:path` annotation.
+#
+###
 romkatv/zsh-bench kind:path
 
-### oh-my-zsh plugins
+
+### Frameworks
+#
+# Frameworks are a collection of Zsh features, settings, and plugins meant to ease
+# Zsh configuration. Unfortunately, all that power can come with serious drawbacks.
+# Frameworks can often set more settings or aliases than you need, cluttering your Zsh
+# config and slowing things down. Use with caution!
+#
+# Frameworks are handled in antidote using the `path:location/of/plugin` annotation.
+
+
+### Framework: Oh-My-Zsh
+#
+# Oh-My-Zsh is a very popular Zsh framework. You might choose to use plugins from OMZ
+# in your own config. Depending on which plugins you use, you may also need to include
+# OMZ's entire "lib" directory. If you do this, be careful - "lib" configures a lot of
+# very broad settings. If you are familiar with what you are doing, you may choose to
+# only include parts of "lib".
+#
+#   # use all of lib
+#   ohmyzsh/ohmyzsh path:lib
+#   # -OR-, only use the specific files we care about
+#   ohmyzsh/ohmyzsh path:lib/clipboard.zsh
+#
+####
 ohmyzsh/ohmyzsh path:lib/clipboard.zsh
 ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/magic-enter
 
-### environment plugins
-# - belak/zsh-utils path:environment
-# - sorin-ionescu/prezto path:modules/environment
-mattmc3/zephyr path:plugins/environment
 
-### terminal plugins
-# - zimfw/termtitle
-# - sorin-ionescu/prezto path:modules/terminal
-olets/zsh-window-title
+### Framework: Prezto
+#
+# Prezto is another popular Zsh framework. You might choose to use parts of it in your
+# config instead of OMZ. Prezto has some key differences from OMZ. For starters, it
+# doesn't have a lib directory and it calls its plugins 'modules'. Its modules also
+# often have functions directories that need autoloaded.
+#
+###
+sorin-ionescu/prezto path:modules/directory
+sorin-ionescu/prezto path:modules/terminal
 
-### editor plugins
-# - belak/zsh-utils path:editor
-# - sorin-ionescu/prezto path:modules/editor
-mattmc3/zephyr path:plugins/editor
 
-### history plugins
-# - belak/zsh-utils path:history
-# - sorin-ionescu/prezto path:modules/history
-mattmc3/zephyr path:plugins/history
+### (Micro-)Framework: zsh-utils
+#
+# zsh-utils is a micro-framework that is well suited to pair with antidote. It provides
+# much of the same core functionality from other bigger frameworks without the bloat or
+# performance hit. If you use prefer to use OMZ instead, you'll want to be sure you
+# include its whole lib directory with `ohmyzsh/ohmyzsh path:lib`. You'll also need
+# to run `compinit` yourself, or keep one of the completion plugins like:
+# - `belak/zsh-utils path:completion`
+# - `sorin-ionescu/prezto path:modules/completion`
+#
+###
+belak/zsh-utils path:editor
+belak/zsh-utils path:history
+belak/zsh-utils path:utility
+belak/zsh-utils path:completion
 
-### directory plugins
-# - belak/zsh-utils path:directory
-# - sorin-ionescu/prezto path:modules/directory
-mattmc3/zephyr path:plugins/directory
 
-### color plugins
-# - sorin-ionescu/prezto path:modules/spectrum
-mattmc3/zephyr path:plugins/colors
+### Deferred Plugins
+#
+# Antidote allows you to defer loading plugins. This is similar to concepts like "turbo
+# mode" in other plugin managers. Antidote handles deferring plugins by leveraging
+# romkatv/zsh-defer, which "defers execution of a zsh command until zsh has nothing else
+# to do and is waiting for user input". In general, you should not defer plugins unless
+# you know for sure they properly support deferred loading, and there are no adverse
+# side-effects (see: https://github.com/romkatv/zsh-defer#Caveats). However, for
+# certain plugins, this can greatly increase your zsh startup speed.
+#
+###
+# Syntax highlighting
+#zsh-users/zsh-syntax-highlighting kind:defer
+zdharma-continuum/fast-syntax-highlighting kind:defer
 
-### completion plugins
-# - belak/zsh-utils path:completion
-# - sorin-ionescu/prezto path:modules/completion
-zsh-users/zsh-completions
-mattmc3/zephyr path:plugins/completions
 
-### fish-like lazy-load functions
+### Plugins
+#
+# Plugins are the simplest kind of bundles. You can point to a full git URL, or if you
+# assume GitHub.com, then you can use the user/repo shorthand.
+#
+###
+# Popular plugins for Fish-like behavior:
 mattmc3/zfunctions
-
-### fish-like conf.d
-mattmc3/zshrc.d
-
-### fish-like core plugins
 zsh-users/zsh-autosuggestions
-zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-history-substring-search

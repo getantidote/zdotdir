@@ -28,19 +28,11 @@ alias d='dirs -v'
 alias l=ls
 
 # mask built-ins with better defaults
-alias cp='cp -i'
-alias mv='mv -i'
-alias rm='rm -i'
-alias mkdir='mkdir -p'
-alias ping='ping -c 5'
-alias type='type -a'
+# alias cp='cp -i'
+# alias mv='mv -i'
+# alias rm='rm -i'
+# alias ping='ping -c 5'
 alias vi=vim
-if [[ "$OSTYPE" == darwin* ]]; then
-  alias ls="ls -G"
-else
-  alias ls="ls --color=auto"
-fi
-alias grep="grep --color=auto --exclude-dir={CVS,.git,.hg,.svn}"
 
 # more ways to ls
 alias ll='ls -lh'
@@ -84,4 +76,4 @@ alias history="fc -li"
 alias please=sudo
 alias zshrc='${EDITOR:-vim} "${ZDOTDIR:-$HOME}"/.zshrc'
 alias zbench='for i in {1..10}; do /usr/bin/time zsh -lic exit; done'
-alias zdot='cd $ZDOTDIR'
+alias zdot='cd ${ZDOTDIR:-~}'

@@ -2,8 +2,8 @@
 # .zshenv
 #
 
-# ZDOTDIR givs an alternate home for zsh rather than $HOME
-export ZDOTDIR=~/.zsh
+# ZDOTDIR gives an alternate home for zsh rather than $HOME
+export ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
 
 # XDG basedirs (https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html)
 export XDG_CONFIG_HOME=~/.config
