@@ -225,3 +225,5 @@ mattmc3/zshrc.d
 # These popular core plugins should be loaded at the end
 zsh-users/zsh-autosuggestions kind:defer
 zsh-users/zsh-history-substring-search
+
+# vim: ft=zsh sw=2 ts=2 et

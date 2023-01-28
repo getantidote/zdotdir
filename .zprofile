@@ -78,3 +78,5 @@ fi
 
 # Use `< file` to quickly view the contents of any file.
 [[ -z "$READNULLCMD" ]] || READNULLCMD=$PAGER
+
+# vim: ft=zsh sw=2 ts=2 et

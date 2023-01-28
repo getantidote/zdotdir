@@ -20,3 +20,5 @@ export ZDOTDIR=${ZDOTDIR:-${XDG_CONFIG_HOME}/zsh}
 if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
+
+# vim: ft=zsh sw=2 ts=2 et

@@ -68,3 +68,5 @@ fi
 
 # Source your static plugins file.
 source $zsh_plugins
+
+# vim: ft=zsh sw=2 ts=2 et
