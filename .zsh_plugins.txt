@@ -17,6 +17,28 @@
 #
 ###
 
+
+### Regular Plugins
+#
+# Plugins are the simplest kind of bundles. You can point to a full git URL, or if you
+# assume GitHub.com, then you can use the user/repo shorthand.
+#
+###
+https://github.com/peterhurford/up.zsh
+rummik/zsh-tailf
+mattmc3/zman
+agkozak/zsh-z
+
+
+### Local Plugins
+#
+# Plugins don't have to come from GitHub. You can also use local directories to host
+# your own custom plugins.
+#
+###
+#~/.config/zsh/plugins/brew
+
+
 ### Prompts
 #
 # You can make certain themes available to the built-in Zsh prompt command using the
@@ -139,18 +161,6 @@ belak/zsh-utils path:utility
 # Syntax highlighting
 #zsh-users/zsh-syntax-highlighting kind:defer
 zdharma-continuum/fast-syntax-highlighting kind:defer
-
-
-### Regular Plugins
-#
-# Plugins are the simplest kind of bundles. You can point to a full git URL, or if you
-# assume GitHub.com, then you can use the user/repo shorthand.
-#
-###
-mattmc3/zman
-https://github.com/peterhurford/up.zsh
-rummik/zsh-tailf
-agkozak/zsh-z
 
 
 ### Completions
