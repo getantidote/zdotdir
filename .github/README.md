@@ -21,6 +21,7 @@ A sample antidote `.zsh_plugins.txt` file that bundles plugins with the followin
 - A `functions` directory for lazy-loaded functions
 - A `conf.d` directory for auto-sourced configs
 - A `completions` directory for user added completions
+- A local plugins directory so you can add your own plugins
 - Lots of [helpful plugins](https://github.com/unixorn/awesome-zsh-plugins)!
 - And much more, all without compromising shell speed :rocket:
 
