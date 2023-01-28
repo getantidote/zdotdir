@@ -1,0 +1,7 @@
+##? is-macos - Tests whether the system is macOS
+
+# function is-macos {
+[[ $OSTYPE == darwin* ]] && return || return 1
+# }
+
+# vim: ft=zsh sw=2 ts=2 et
