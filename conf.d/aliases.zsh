@@ -15,6 +15,7 @@ alias -g ..9='../../../../../../../../..'
 # single character aliases - be sparing!
 alias _=sudo
 alias l=ls
+alias g=git
 
 # mask built-ins with better defaults
 alias vi=vim
