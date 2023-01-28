@@ -1,4 +1,4 @@
-##? is-macos - Tests whether the system is macOS
+##? is-macos - conditional function that tests whether the system is macOS
 
 # function is-macos {
 [[ $OSTYPE == darwin* ]] && return || return 1

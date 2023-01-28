@@ -1,0 +1,5 @@
+# function pmodload {
+  # if you are using Prezto, you'll need an empty pmodload function
+# }
+
+# vim: ft=zsh sw=2 ts=2 et
