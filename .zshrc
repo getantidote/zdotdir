@@ -35,9 +35,6 @@ unset funcdir
 # Be sure to set any supplemental completions directories before compinit is run.
 fpath=(${ZDOTDIR}/completions(-/FN) $fpath)
 
-# Add any completion zstyles.
-zstyle ':completion:*:*:git:*' script $ZDOTDIR/completions/.git-completion.bash
-
 # Set the key mapping style to 'emacs' or 'vi'.
 zstyle ':prezto:module:editor' key-bindings 'emacs'
 
