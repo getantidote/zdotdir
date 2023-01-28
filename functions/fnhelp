@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 ##? fnhelp - use '##?' comments in function files as help docs.
 ##?
 ##? usage: fnhelp <func>
@@ -11,3 +9,5 @@ if [[ ! -f "$ZFUNCDIR/$1" ]]; then
 fi
 command grep "^##?" "$ZFUNCDIR/$1" | cut -c 5-
 # }
+
+# vim: ft=zsh sw=2 ts=2 et

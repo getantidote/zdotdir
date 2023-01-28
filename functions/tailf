@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 ##? tailf - `tail -f` with prefixed newlines instead of trailing
 ##?
 ##? usage: tailf <file>
@@ -11,3 +9,5 @@ tail -f $2 | while read j; do
   nl="\n"
 done
 # }
+
+# vim: ft=zsh sw=2 ts=2 et
