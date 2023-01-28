@@ -39,6 +39,24 @@ agkozak/zsh-z
 #~/.config/zsh/plugins/brew
 
 
+### Local Plugins with Variables
+#
+# If you want to use variables in this file, you will need to use the envsubst utility.
+# It may come installed on your system, or be available in your OS package manager. Or,
+# you can use the Python one-liner wrapper function included in this sample project.
+# To replace environment variables, you need to change your `antidote bundle` call to
+# this.
+#
+#   zsh_plugins=${ZDOTDIR:-~}/.zsh_plugins.zsh
+#   envsubst <${zsh_plugins:r}.txt | antidote bundle >|$zsh_plugins
+#
+###
+# reference your own plugins
+# $ZSH_CUSTOM/plugins/nodejs
+# $ZSH_CUSTOM/plugins/python
+# $ZSH_CUSTOM/plugins/ruby
+
+
 ### Prompts
 #
 # You can make certain themes available to the built-in Zsh prompt command using the
