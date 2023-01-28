@@ -1,17 +1,22 @@
 #
-# .zshenv
+# .zshenv - Zsh environment file, loaded always.
+#
+# NOTE: .zshenv has to live at ~/.zshenv, not in $ZDOTDIR! You can get around this by
+# symlinking .zshenv from your $ZDOTDIR: `ln -sf $ZDOTDIR/.zshenv ~/.zshenv`
 #
 
-# ZDOTDIR gives an alternate home for zsh rather than $HOME
-export ZDOTDIR=${ZDOTDIR:-$HOME/.zsh}
+#
+# ZDOTDIR
+#
 
-# XDG basedirs (https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html)
-export XDG_CONFIG_HOME=~/.config
-export XDG_CACHE_HOME=~/.cache
-export XDG_DATA_HOME=~/.local/share
-export XDG_RUNTIME_DIR=~/.xdg
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-${HOME}/.config}
+export ZDOTDIR=${ZDOTDIR:-${XDG_CONFIG_HOME}/zsh}
 
-# define environment for non-login, non-interactive shells which don't source .zprofile
-if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s $ZDOTDIR/.zprofile ]]; then
-  source $ZDOTDIR/.zprofile
+#
+# .zprofile
+#
+
+# We use .zprofile for everything else (load for non-login, non-interactive shells).
+if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
