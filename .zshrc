@@ -44,6 +44,9 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 # Auto convert .... to ../..
 zstyle ':prezto:module:editor' dot-expansion 'yes'
 
+# Use sorin theme if using Prezto
+zstyle ':prezto:module:prompt' theme 'sorin'
+
 #
 # antidote
 #
