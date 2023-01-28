@@ -1,5 +1,5 @@
 #
-# .zsh_plugins.txt
+# .zsh_plugins.txt - antidote plugins file
 #
 
 ### Overview
@@ -24,27 +24,20 @@
 # run:
 #
 #   autoload -Uz promptinit && promptinit
-#   prompt promptname
+#   prompt ${prompt_name:-pure}
+#
+# There are two ways to load prompts.
+# - Add multiple prompt plugins to your `$fpath` with `kind:fpath` and then later in
+#   your .zshrc run the Zsh built-in `prompt` to select the theme.
+# - Or, just load one prompt like a regular plugin.
 #
 ###
-sindresorhus/pure kind:fpath
 
+# Use kind:fpath for prompts you want available to promptinit.
+romkatv/powerlevel10k kind:fpath
 
-### Completions
-#
-# You may want to add some additional completions to Zsh. Completions look in your fpath
-# for completion functions (eg: functions named with a leading underscore). You need to
-# add any supplemental completions to your fpath prior to running `compinit`. In the
-# Frameworks section below, we'll handle compinit, or you could chose to run it
-# yourself in your `.zshrc`:
-#
-#   autoload -Uz compinit && compinit
-#
-# This is a popular plugin for adding supplemental completions. We combine the `path:`
-# and `kind:fpath` annotations here:
-#
-###
-zsh-users/zsh-completions path:src kind:fpath
+# Or, just load a prompt plugin the normal way.
+sindresorhus/pure
 
 
 ### Utilities
@@ -66,7 +59,8 @@ romkatv/zsh-bench kind:path
 # config and slowing things down. Use with caution!
 #
 # Frameworks are handled in antidote using the `path:location/of/plugin` annotation.
-
+#
+###
 
 ### Framework: Oh-My-Zsh
 #
@@ -78,42 +72,57 @@ romkatv/zsh-bench kind:path
 #
 #   # use all of lib
 #   ohmyzsh/ohmyzsh path:lib
-#   # -OR-, only use the specific files we care about
+#   # -OR-, only use only the specific files we care about
 #   ohmyzsh/ohmyzsh path:lib/clipboard.zsh
 #
 ####
 ohmyzsh/ohmyzsh path:lib/clipboard.zsh
+ohmyzsh/ohmyzsh path:plugins/copybuffer
+ohmyzsh/ohmyzsh path:plugins/copyfile
+ohmyzsh/ohmyzsh path:plugins/copypath
 ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/magic-enter
+ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 
 
 ### Framework: Prezto
 #
 # Prezto is another popular Zsh framework. You might choose to use parts of it in your
-# config instead of OMZ. Prezto has some key differences from OMZ. For starters, it
-# doesn't have a lib directory and it calls its plugins 'modules'. Its modules also
-# often have functions directories that need autoloaded.
+# config alongside/instead of OMZ. Prezto has some key differences from OMZ. For
+# starters, it doesn't have a lib directory and it calls its plugins 'modules'. Its
+# modules also often have functions directories that need autoloaded. And, because it's
+# meant to be used as an integrated framework, Prezto modules don't operate well as
+# cherry-picking independent plugins, so using Prezto with antidote is not recommended
+# for anyone but the most advanced Zsh users.
 #
 ###
+
+# Prezto can be difficult to assemble because it's so interdependent.
+# Use at your own risk.
+sorin-ionescu/prezto path:modules/helper
+sorin-ionescu/prezto path:modules/environment
 sorin-ionescu/prezto path:modules/directory
+sorin-ionescu/prezto path:modules/editor
 sorin-ionescu/prezto path:modules/terminal
+# sorin-ionescu/prezto path:modules/python
+# sorin-ionescu/prezto path:modules/python/functions kind:autoload
+# sorin-ionescu/prezto path:modules/osx conditional:is-macos
+# sorin-ionescu/prezto path:modules/osx/functions kind:autoload conditional:is-macos
 
 
-### (Micro-)Framework: zsh-utils
+### Framework: zsh-utils
 #
-# zsh-utils is a micro-framework that is well suited to pair with antidote. It provides
-# much of the same core functionality from other bigger frameworks without the bloat or
-# performance hit. If you use prefer to use OMZ instead, you'll want to be sure you
-# include its whole lib directory with `ohmyzsh/ohmyzsh path:lib`. You'll also need
-# to run `compinit` yourself, or keep one of the completion plugins like:
-# - `belak/zsh-utils path:completion`
-# - `sorin-ionescu/prezto path:modules/completion`
+# zsh-utils is a micro-framework that is also well suited to pair with antidote. It
+# provides much of the same core functionality from other bigger frameworks without the
+# bloat or performance hit. Using zsh-utils, you may find you don't need much else.
+# If you want a really thin framework, this is great.
 #
 ###
-belak/zsh-utils path:editor
 belak/zsh-utils path:history
 belak/zsh-utils path:utility
-belak/zsh-utils path:completion
+#belak/zsh-utils path:editor
+#belak/zsh-utils path:prompt
+#belak/zsh-utils path:completion
 
 
 ### Deferred Plugins
@@ -132,13 +141,50 @@ belak/zsh-utils path:completion
 zdharma-continuum/fast-syntax-highlighting kind:defer
 
 
-### Plugins
+### Regular Plugins
 #
 # Plugins are the simplest kind of bundles. You can point to a full git URL, or if you
 # assume GitHub.com, then you can use the user/repo shorthand.
 #
 ###
-# Popular plugins for Fish-like behavior:
-mattmc3/zfunctions
-zsh-users/zsh-autosuggestions
+mattmc3/zman
+https://github.com/peterhurford/up.zsh
+rummik/zsh-tailf
+agkozak/zsh-z
+
+
+### Completions
+#
+# You may want to add some additional completions to Zsh. Completions look in your fpath
+# for completion functions, which are functions named with a leading underscore
+# (eg: _git). You need to add all supplemental completions to your fpath prior to
+# running `compinit` to use completions functionality properly. You will want to find
+# a completion plugin that runs `compinit` for you, or you can run it yourself in
+# your .zshrc after antidote loads like this:
+#
+#   autoload -Uz compinit && compinit
+#
+###
+
+# zsh-users/zsh-completions is a popular plugin for adding supplemental completions.
+# We combine the `path:` and `kind:fpath` annotations here:
+zsh-users/zsh-completions path:src kind:fpath
+
+# Compinit plugins should be near the end of .zsh_plugins.txt so that $fpath has been
+# fully populated. Use zsh-utils for its completion plugin.
+belak/zsh-utils path:completion
+
+
+### Final Plugins
+#
+# Remember plugin order matters! Put plugins that need run last at the bottom of your
+# .zsh_plugins.txt file.
+#
+###
+
+# Source everything in $ZDOTDIR/rc.d prior to wrapping up.
+mattmc3/zshrc.d
+
+# These popular core plugins should be loaded at the end
+zsh-users/zsh-autosuggestions kind:defer
 zsh-users/zsh-history-substring-search
