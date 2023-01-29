@@ -35,14 +35,8 @@ unset funcdir
 # Be sure to set any supplemental completions directories before compinit is run.
 fpath=(${ZDOTDIR}/completions(-/FN) $fpath)
 
-# Set the key mapping style to 'emacs' or 'vi'.
-zstyle ':prezto:module:editor' key-bindings 'emacs'
-
-# Auto convert .... to ../..
-zstyle ':prezto:module:editor' dot-expansion 'yes'
-
-# Use sorin theme if using Prezto
-zstyle ':prezto:module:prompt' theme 'sorin'
+# Source .zpreztorc
+[[ -f $ZDOTDIR/.zpreztorc ]] && . $ZDOTDIR/.zpreztorc
 
 #
 # antidote
