@@ -1,7 +1,10 @@
+# zsh-defer
+romkatv/zsh-defer
+
 # prompt
 sindresorhus/pure
 
 # plugins
 zsh-users/zsh-autosuggestions
 marlonrichert/zsh-autocomplete
-zdharma-continuum/fast-syntax-highlighting
+zdharma-continuum/fast-syntax-highlighting kind:defer

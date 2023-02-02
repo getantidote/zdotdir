@@ -40,7 +40,10 @@ antidote load
 # fast-theme forest &>/dev/null
 
 # Set your fast-syntax-highlighting theme.
-fast-theme forest
+# fast-theme forest
+
+# If you deferred fast-syntax-highlighting, you also need to defer `fast-theme`
+zsh-defer fast-theme forest
 
 
 #
