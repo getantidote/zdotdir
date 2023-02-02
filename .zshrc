@@ -42,6 +42,9 @@ fpath=(${ZDOTDIR}/completions(-/FN) $fpath)
 # antidote
 #
 
+[[ -d ${ZDOTDIR:-~}/.antidote ]] ||
+  git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-~}/.antidote
+
 # Set the name of the static .zsh plugins file antidote will generate.
 zsh_plugins=${ZDOTDIR:-~}/.zsh_plugins.zsh
 
@@ -49,7 +52,7 @@ zsh_plugins=${ZDOTDIR:-~}/.zsh_plugins.zsh
 [[ -f ${zsh_plugins:r}.txt ]] || touch ${zsh_plugins:r}.txt
 
 # Lazy-load antidote.
-fpath+=(${ZDOTDIR:-~}/.antidote)
+fpath+=(${ZDOTDIR:-~}/.antidote/functions)
 autoload -Uz $fpath[-1]/antidote
 
 # Generate static file in a subshell when .zsh_plugins.txt is updated.
