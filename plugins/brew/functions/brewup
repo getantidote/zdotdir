@@ -1,7 +1,0 @@
-##? brewup - `brew update && brew upgrade`
-
-# function brewup {
-brew update && brew upgrade
-# }
-
-# vim: ft=zsh sw=2 ts=2 et

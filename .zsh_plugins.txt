@@ -1,3 +1,4 @@
+#!/bin/zsh
 #
 # .zsh_plugins.txt - antidote plugins file
 #
@@ -32,12 +33,12 @@ agkozak/zsh-z
 
 ### Local Plugins
 #
-# Plugins don't have to come from GitHub. You can also use local directories to host
-# your own custom plugins.
+# Plugins don't have to come from GitHub. You can also use local files or directories to
+# host your own custom plugins.
 #
 ###
-#~/.config/zsh/plugins/brew
-
+$ZDOTDIR/.aliases
+#$ZDOTDIR/custom/plugins/example
 
 ### Local Plugins with Variables
 #
@@ -139,14 +140,14 @@ ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 
 # Prezto can be difficult to assemble because it's so interdependent.
 # Use at your own risk.
-sorin-ionescu/prezto path:modules/helper/functions kind:autoload
-sorin-ionescu/prezto path:modules/helper
-sorin-ionescu/prezto path:modules/environment
-sorin-ionescu/prezto path:modules/terminal
-sorin-ionescu/prezto path:modules/editor
-sorin-ionescu/prezto path:modules/directory
-sorin-ionescu/prezto path:modules/git/functions kind:autoload
-sorin-ionescu/prezto path:modules/git
+# sorin-ionescu/prezto path:modules/helper/functions kind:autoload
+# sorin-ionescu/prezto path:modules/helper
+# sorin-ionescu/prezto path:modules/environment
+# sorin-ionescu/prezto path:modules/terminal
+# sorin-ionescu/prezto path:modules/editor
+# sorin-ionescu/prezto path:modules/directory
+# sorin-ionescu/prezto path:modules/git/functions kind:autoload
+# sorin-ionescu/prezto path:modules/git
 
 # And Prezto has tons more...
 # sorin-ionescu/prezto path:modules/history
@@ -159,8 +160,8 @@ sorin-ionescu/prezto path:modules/git
 # sorin-ionescu/prezto path:modules/prompt
 # sorin-ionescu/prezto path:modules/python
 # sorin-ionescu/prezto path:modules/python/functions kind:autoload
-# sorin-ionescu/prezto path:modules/osx conditional:is-macos
-# sorin-ionescu/prezto path:modules/osx/functions kind:autoload conditional:is-macos
+# sorin-ionescu/prezto path:modules/osx conditional:ismacos
+# sorin-ionescu/prezto path:modules/osx/functions kind:autoload conditional:ismacos
 
 
 ### Framework: zsh-utils
@@ -173,10 +174,7 @@ sorin-ionescu/prezto path:modules/git
 ###
 belak/zsh-utils path:history
 belak/zsh-utils path:utility
-#belak/zsh-utils path:editor
-#belak/zsh-utils path:prompt
-#belak/zsh-utils path:completion
-
+belak/zsh-utils path:editor
 
 ### Deferred Plugins
 #
@@ -223,11 +221,6 @@ belak/zsh-utils path:completion
 #
 ###
 
-# Source everything in $ZDOTDIR/rc.d prior to wrapping up.
-mattmc3/zshrc.d
-
 # These popular core plugins should be loaded at the end
 zsh-users/zsh-autosuggestions kind:defer
 zsh-users/zsh-history-substring-search
-
-# vim: ft=zsh sw=2 ts=2 et

@@ -1,16 +1,7 @@
+#!/bin/zsh
 #
-# aliases - Set whatever Zsh aliases you want.
+# .aliases - Set whatever shell aliases you want.
 #
-
-# suffix aliases (ie: `cd ..4`)
-alias -g ..2='../..'
-alias -g ..3='../../..'
-alias -g ..4='../../../..'
-alias -g ..5='../../../../..'
-alias -g ..6='../../../../../..'
-alias -g ..7='../../../../../../..'
-alias -g ..8='../../../../../../../..'
-alias -g ..9='../../../../../../../../..'
 
 # single character aliases - be sparing!
 alias _=sudo

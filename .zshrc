@@ -1,66 +1,23 @@
+#!/bin/zsh
 #
 # .zshrc - Zsh file loaded on interactive shell sessions.
 #
 
-#
-# Profiling
-#
-
-# Load zprof first if we need to profile.
-[[ ${ZPROFRC:-0} -eq 0 ]] || zmodload zsh/zprof
-alias zprofrc="ZPROFRC=1 zsh"
-
-#
-# Options
-#
-
-# Set general Zsh options needed for config.
+# Zsh options.
 setopt extended_glob
 
-#
-# Lazy-load functions
-#
+# Functions you might use with antidote.
+ismacos() {
+  [[ $OSTYPE = *darwin* ]] || return 1
+}
 
-# Autoload functions directory and its subdirs.
-for funcdir in $ZDOTDIR/functions $ZDOTDIR/functions/*(N/); do
-  fpath=($funcdir $fpath)
-  autoload -Uz $fpath[1]/*(.:t)
-done
-unset funcdir
+# Zstyles you might use with antidote
+[[ -e ${ZDOTDIR:-~}/.zsyles ]] && source ${ZDOTDIR:-~}/.zsyles
 
-#
-# Pre-antidote
-#
-
-# Be sure to set any supplemental completions directories before compinit is run.
-fpath=(${ZDOTDIR}/completions(-/FN) $fpath)
-
-# Source .zpreztorc
-[[ -f $ZDOTDIR/.zpreztorc ]] && . $ZDOTDIR/.zpreztorc
-
-#
-# antidote
-#
-
+# Clone antidote if necessary.
 [[ -d ${ZDOTDIR:-~}/.antidote ]] ||
   git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-~}/.antidote
 
-# Set the name of the static .zsh plugins file antidote will generate.
-zsh_plugins=${ZDOTDIR:-~}/.zsh_plugins.zsh
-
-# Ensure you have a .zsh_plugins.txt file where you can add plugins.
-[[ -f ${zsh_plugins:r}.txt ]] || touch ${zsh_plugins:r}.txt
-
-# Lazy-load antidote.
-fpath+=(${ZDOTDIR:-~}/.antidote/functions)
-autoload -Uz $fpath[-1]/antidote
-
-# Generate static file in a subshell when .zsh_plugins.txt is updated.
-if [[ ! $zsh_plugins -nt ${zsh_plugins:r}.txt ]]; then
-  (antidote bundle <${zsh_plugins:r}.txt >|$zsh_plugins)
-fi
-
-# Source your static plugins file.
-source $zsh_plugins
-
-# vim: ft=zsh sw=2 ts=2 et
+# Create an amazing Zsh config using antidote plugins.
+source ${ZDOTDIR:-~}/.antidote/antidote.zsh
+antidote load
