@@ -1,10 +1,10 @@
 # zdotdir
 
-> A full-featured sample Zsh config using antidote
+> A sample Zsh config using antidote
 
 ## Description
 
-This project aims to give you an example Zsh config that uses [antidote] as a plugin manager and pulls some amazing Zsh plugins together. Consider it a starter kit for Zsh. Please borrow from it for your own config, or fork it and make it your own.
+This project aims to give you an example Zsh config that uses [antidote] as a plugin manager and pulls some amazing Zsh plugins together. Consider it a starter kit for antidote and Zsh. Please borrow from it for your own config, or fork it and make it your own.
 
 ## What's included
 
