@@ -1,15 +1,9 @@
-#####
-# .zshrc - Zsh file loaded on interactive shell sessions.
-#####
-
-
 #
-# ???
+# .zshrc - Zsh file loaded on interactive shell sessions.
 #
 
 # ???
 # Put other .zshrc things here...
-
 
 #
 # Options
@@ -31,24 +25,8 @@ setopt extended_glob interactive_comments
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 antidote load
 
-
-#
-# Plugin settings
-#
-
-# Set your fast-syntax-highlighting theme quietly.
-# fast-theme forest &>/dev/null
-
-# Set your fast-syntax-highlighting theme.
-# fast-theme forest
-
-# If you deferred fast-syntax-highlighting, you also need to defer `fast-theme`
-zsh-defer fast-theme forest
-
-
-#
-# ???
-#
+# Setup OMZ
+ZSH=$(antidote path ohmyzsh/ohmyzsh)
 
 # ???
 # Put other .zshrc things here...

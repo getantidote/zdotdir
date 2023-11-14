@@ -1,10 +1,32 @@
-# zsh-defer
-romkatv/zsh-defer
+# Standard plugins
+djui/alias-tips
 
-# prompt
-sindresorhus/pure
+# Be sure completion plugins are added to fpath, but don't load them
+ohmyzsh/ohmyzsh path:plugins/rails kind:fpath
 
-# plugins
-zsh-users/zsh-autosuggestions
-marlonrichert/zsh-autocomplete
-zdharma-continuum/fast-syntax-highlighting kind:defer
+# Initialize Zsh completions (must be called after fpath populated with all desired completions)
+zshzoo/completion
+
+# Oh My Zsh lib (required before OMZ plugins)
+ohmyzsh/ohmyzsh path:lib
+
+# Oh My Zsh plugins
+#ohmyzsh/ohmyzsh path:plugins/rtx
+ohmyzsh/ohmyzsh path:plugins/git
+#ohmyzsh/ohmyzsh path:plugins/bun
+ohmyzsh/ohmyzsh path:plugins/npm
+ohmyzsh/ohmyzsh path:plugins/yarn
+ohmyzsh/ohmyzsh path:plugins/brew
+ohmyzsh/ohmyzsh path:plugins/ruby
+ohmyzsh/ohmyzsh path:plugins/macos
+ohmyzsh/ohmyzsh path:plugins/zoxide
+ohmyzsh/ohmyzsh path:plugins/gcloud
+#ohmyzsh/ohmyzsh path:plugins/thefuck
+ohmyzsh/ohmyzsh path:plugins/bundler
+ohmyzsh/ohmyzsh path:plugins/composer
+ohmyzsh/ohmyzsh path:plugins/starship
+ohmyzsh/ohmyzsh path:plugins/multipass
+ohmyzsh/ohmyzsh path:plugins/1password
+
+# Now load plugins that expected compinit
+ohmyzsh/ohmyzsh path:plugins/rails
