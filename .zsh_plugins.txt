@@ -1,46 +1,54 @@
 #
-# .zsh_plugins.txt: antidote plugins
+# ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
 #
 
-# Be sure completion plugins are added to fpath, but don't load them
-
-# Make setting up OMZ with antidote simpler
+# If you use Oh-My-Zsh with antidote, load this plugin FIRST to set things up so you
+# don't have to worry about whether OMZ will work correctly.
 mattmc3/antidote-use-omz
 
-# Load all of Oh My Zsh's lib
-ohmyzsh/ohmyzsh path:lib
+# Regarding OMZ libs - you may decide to use all of OMZ's lib like so:
+#   ohmyzsh/ohmyzsh path:lib
+#
+# -OR-, if you really know what you want and nothing else, you might be able to
+# choose only the specific libs you need:
+#   ohmyzsh/ohmyzsh path:lib/clipboard.zsh
+#
 
-# Oh My Zsh plugins
+# Let's go ahead and use all of Oh My Zsh's lib directory.
+#ohmyzsh/ohmyzsh path:lib
+
+# Now, let's pick our Oh My Zsh utilty plugins
 ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 ohmyzsh/ohmyzsh path:plugins/copybuffer
 ohmyzsh/ohmyzsh path:plugins/copyfile
 ohmyzsh/ohmyzsh path:plugins/copypath
-ohmyzsh/ohmyzsh path:plugins/brew
 ohmyzsh/ohmyzsh path:plugins/extract
-ohmyzsh/ohmyzsh path:plugins/git
 ohmyzsh/ohmyzsh path:plugins/globalias
 ohmyzsh/ohmyzsh path:plugins/magic-enter
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 ohmyzsh/ohmyzsh path:plugins/git
 ohmyzsh/ohmyzsh path:plugins/ruby
-ohmyzsh/ohmyzsh path:plugins/macos conditional:is-macos
 ohmyzsh/ohmyzsh path:plugins/otp
 ohmyzsh/ohmyzsh path:plugins/zoxide
 
-# Prompt
-romkatv/powerlevel10k
-
-# Languages
+# Add some programmer plugins
+ohmyzsh/ohmyzsh path:plugins/git
 ohmyzsh/ohmyzsh path:plugins/golang
 ohmyzsh/ohmyzsh path:plugins/python
 ohmyzsh/ohmyzsh path:plugins/ruby
 ohmyzsh/ohmyzsh path:plugins/rails
 
-# My plugins
-mattmc3/zman
+# Prompt
+romkatv/powerlevel10k
 
-# Core plugins
+# Add macOS specific plugins
+ohmyzsh/ohmyzsh path:plugins/brew conditional:is-macos
+ohmyzsh/ohmyzsh path:plugins/macos conditional:is-macos
+
+# Add binary utils
 romkatv/zsh-bench kind:path
+
+# Add core plugins that make Zsh a bit more like Fish
 zsh-users/zsh-completions path:src kind:fpath
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
