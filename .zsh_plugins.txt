@@ -38,9 +38,6 @@ ohmyzsh/ohmyzsh path:plugins/python
 ohmyzsh/ohmyzsh path:plugins/ruby
 ohmyzsh/ohmyzsh path:plugins/rails
 
-# Prompt
-romkatv/powerlevel10k
-
 # Add macOS specific plugins
 ohmyzsh/ohmyzsh path:plugins/brew conditional:is-macos
 ohmyzsh/ohmyzsh path:plugins/macos conditional:is-macos
