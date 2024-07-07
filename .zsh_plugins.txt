@@ -18,30 +18,6 @@
 #
 ###
 
-### Completions
-#
-# You may want to add some additional completions to Zsh. Completions look in your fpath
-# for completion functions, which are functions named with a leading underscore
-# (eg: _git). You need to add all supplemental completions to your fpath prior to
-# running `compinit` to use completions functionality properly. You will want to find
-# a completion plugin that runs `compinit` for you, or you can run it yourself in
-# your .zshrc after antidote loads like this:
-#
-#   autoload -Uz compinit && compinit
-#
-###
-
-# With antidote, using Zephyr's completion plugin is recommended. This plugin is meant
-# to be run near the TOP of your .zsh_plugins.txt file.
-mattmc3/zephyr path:plugins/completion
-
-# zsh-users/zsh-completions is a popular plugin for adding supplemental completions.
-# We combine the `path:` and `kind:fpath` annotations here:
-# zsh-users/zsh-completions path:src kind:fpath
-
-# Most other compinit plugins should be near the END of .zsh_plugins.txt so that $fpath
-# has been fully populated. One such plugin is zsh-utils and its completion subplugin.
-# belak/zsh-utils path:completion
 
 ### Regular Plugins
 #
@@ -63,6 +39,7 @@ agkozak/zsh-z
 ###
 $ZDOTDIR/.aliases
 #$ZDOTDIR/custom/plugins/example
+
 
 ### Local Plugins with Variables
 #
@@ -127,6 +104,7 @@ romkatv/zsh-bench kind:path
 #
 ###
 
+
 ### Framework: Oh-My-Zsh
 #
 # Oh-My-Zsh is a very popular Zsh framework. You might choose to use plugins from OMZ
@@ -141,6 +119,7 @@ romkatv/zsh-bench kind:path
 #   ohmyzsh/ohmyzsh path:lib/clipboard.zsh
 #
 ####
+getantidote/use-omz
 ohmyzsh/ohmyzsh path:lib/clipboard.zsh
 ohmyzsh/ohmyzsh path:plugins/copybuffer
 ohmyzsh/ohmyzsh path:plugins/copyfile
@@ -164,6 +143,7 @@ ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 
 # Prezto can be difficult to assemble because it's so interdependent.
 # Use at your own risk.
+# getantidote/use-prezto
 # sorin-ionescu/prezto path:modules/helper/functions kind:autoload
 # sorin-ionescu/prezto path:modules/helper
 # sorin-ionescu/prezto path:modules/environment
@@ -200,6 +180,7 @@ belak/zsh-utils path:history
 belak/zsh-utils path:utility
 belak/zsh-utils path:editor
 
+
 ### Deferred Plugins
 #
 # Antidote allows you to defer loading plugins. This is similar to concepts like "turbo
@@ -215,6 +196,29 @@ belak/zsh-utils path:editor
 # Syntax highlighting
 #zsh-users/zsh-syntax-highlighting kind:defer
 zdharma-continuum/fast-syntax-highlighting kind:defer
+
+
+### Completions
+#
+# You may want to add some additional completions to Zsh. Completions look in your fpath
+# for completion functions, which are functions named with a leading underscore
+# (eg: _git). You need to add all supplemental completions to your fpath prior to
+# running `compinit` to use completions functionality properly. You will want to find
+# a completion plugin that runs `compinit` for you, or you can run it yourself in
+# your .zshrc after antidote loads like this:
+#
+#   autoload -Uz compinit && compinit
+#
+###
+
+# zsh-users/zsh-completions is a popular plugin for adding supplemental completions.
+# We combine the `path:` and `kind:fpath` annotations here:
+zsh-users/zsh-completions path:src kind:fpath
+
+# If you want to use the belak/zsh-utils completion plugin to run your compinit, this
+# plugin is meant to be run near the END of your .zsh_plugins.txt file after fpath is
+# fully populated.
+belak/zsh-utils path:completion
 
 
 ### Final Plugins
