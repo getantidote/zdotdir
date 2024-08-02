@@ -1,0 +1,25 @@
+# zinit
+==> benchmarking login shell of user matt ...
+creates_tty=0
+has_compsys=1
+has_syntax_highlighting=1
+has_autosuggestions=1
+has_git_prompt=1
+first_prompt_lag_ms=16.697
+first_command_lag_ms=170.760
+command_lag_ms=14.897
+input_lag_ms=13.518
+exit_time_ms=83.964
+
+# antidote
+==> benchmarking login shell of user matt ...
+creates_tty=0
+has_compsys=1
+has_syntax_highlighting=1
+has_autosuggestions=1
+has_git_prompt=1
+first_prompt_lag_ms=16.915
+first_command_lag_ms=171.777
+command_lag_ms=14.560
+input_lag_ms=13.530
+exit_time_ms=88.013
