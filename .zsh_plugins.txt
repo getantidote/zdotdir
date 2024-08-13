@@ -19,6 +19,36 @@
 ###
 
 
+### Completions
+#
+# You may want to add some additional completions to Zsh. Completions look in your fpath
+# for completion functions, which are functions named with a leading underscore
+# (eg: _git). You need to add all supplemental completions to your fpath prior to
+# running `compinit` to use completions functionality properly. You will want to find
+# a completion plugin that runs `compinit` for you, or you can run it yourself in
+# your .zshrc after antidote loads like this:
+#
+#   autoload -Uz compinit && compinit
+#
+###
+
+# zsh-users/zsh-completions is a popular plugin for adding supplemental completions.
+# We combine the `path:` and `kind:fpath` annotations here:
+zsh-users/zsh-completions path:src kind:fpath
+
+# This is the recommended plugin for handling compinit and setting completion zstyles.
+# It's designed to handle all the complexity of the Zsh completion system so the user
+# doesn't have to.
+mattmc3/ez-compinit
+
+# There are also other plugins that handle completions if you prefer something else.
+# However, ez-compinit is highly recommended, and was built by the author of antidote.
+#
+# If you want to use the belak/zsh-utils completion plugin to run your compinit, this
+# plugin is meant to be run near the END of your .zsh_plugins.txt file after fpath is
+# fully populated.
+# belak/zsh-utils path:completion
+
 ### Regular Plugins
 #
 # Plugins are the simplest kind of bundles. You can point to a full git URL, or if you
@@ -196,30 +226,6 @@ belak/zsh-utils path:editor
 # Syntax highlighting
 #zsh-users/zsh-syntax-highlighting kind:defer
 zdharma-continuum/fast-syntax-highlighting kind:defer
-
-
-### Completions
-#
-# You may want to add some additional completions to Zsh. Completions look in your fpath
-# for completion functions, which are functions named with a leading underscore
-# (eg: _git). You need to add all supplemental completions to your fpath prior to
-# running `compinit` to use completions functionality properly. You will want to find
-# a completion plugin that runs `compinit` for you, or you can run it yourself in
-# your .zshrc after antidote loads like this:
-#
-#   autoload -Uz compinit && compinit
-#
-###
-
-# zsh-users/zsh-completions is a popular plugin for adding supplemental completions.
-# We combine the `path:` and `kind:fpath` annotations here:
-zsh-users/zsh-completions path:src kind:fpath
-
-# If you want to use the belak/zsh-utils completion plugin to run your compinit, this
-# plugin is meant to be run near the END of your .zsh_plugins.txt file after fpath is
-# fully populated.
-belak/zsh-utils path:completion
-
 
 ### Final Plugins
 #
