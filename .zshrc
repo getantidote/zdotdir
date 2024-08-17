@@ -3,21 +3,43 @@
 # .zshrc - Zsh file loaded on interactive shell sessions.
 #
 
-# Zsh options.
+#
+# Options
+#
+
 setopt extended_glob
 
-# Autoload functions you might want to use with antidote.
-ZFUNCDIR=${ZFUNCDIR:-$ZDOTDIR/functions}
-fpath=($ZFUNCDIR $fpath)
-autoload -Uz $fpath[1]/*(.:t)
+#
+# Paths
+#
+
+# Ensure path arrays do not contain duplicates.
+typeset -gU path fpath
+
+# Set the list of directories that zsh searches for commands.
+path=(
+  $HOME/{,s}bin(N)
+  /opt/{homebrew,local}/{,s}bin(N)
+  /usr/local/{,s}bin(N)
+  $path
+)
+(( $+commands[brew] )) && source <(brew shellenv)
+
+#
+# Zstyles
+#
 
 # Source zstyles you might use with antidote.
-[[ -e ${ZDOTDIR:-~}/.zstyles ]] && source ${ZDOTDIR:-~}/.zstyles
+[[ -e ${ZDOTDIR:-$HOME}/.zstyles ]] && source ${ZDOTDIR:-$HOME}/.zstyles
+
+#
+# Plugins
+#
 
 # Clone antidote if necessary.
-[[ -d ${ZDOTDIR:-~}/.antidote ]] ||
-  git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-~}/.antidote
+[[ -d ${ZDOTDIR:-$HOME}/.antidote ]] ||
+  git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-$HOME}/.antidote
 
-# Create an amazing Zsh config using antidote plugins.
-source ${ZDOTDIR:-~}/.antidote/antidote.zsh
+# Compose your perfect Zsh config using plugins.
+source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
 antidote load
