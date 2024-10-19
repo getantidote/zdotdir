@@ -18,13 +18,6 @@ autoload -Uz $ZFUNCDIR/*(.:t)
 # Set any zstyles you might use for configuration.
 [[ ! -f ${ZDOTDIR:-$HOME}/.zstyles ]] || source ${ZDOTDIR:-$HOME}/.zstyles
 
-
-# zstyle ':antidote:bundle' file ${ZDOTDIR:-$HOME}/.zplugins.txt
-# zstyle ':antidote:bundle' use-friendly-names 'yes'
-
-# Set any variables your plugins might use.
-ZFUNCDIR=${ZDOTDIR:-$HOME}/.zfunctions
-
 # Clone antidote if necessary.
 if [[ ! -d ${ZDOTDIR:-$HOME}/.antidote ]]; then
   git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-$HOME}/.antidote
@@ -34,7 +27,7 @@ fi
 source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
 antidote load
 
-# Run anything in .zshrc.d.
+# Source anything in .zshrc.d.
 for _rc in ${ZDOTDIR:-$HOME}/.zshrc.d/*.zsh; do
   # Ignore tilde files.
   if [[ $_rc:t != '~'* ]]; then
@@ -43,5 +36,5 @@ for _rc in ${ZDOTDIR:-$HOME}/.zshrc.d/*.zsh; do
 done
 unset _rc
 
-# To customize prompt, run `p10k configure` or edit ~/Projects/getantidote/zdotdir/.p10k.zsh.
+# To customize prompt, run `p10k configure` or edit .p10k.zsh.
 [[ ! -f ${ZDOTDIR:-$HOME}/.p10k.zsh ]] || source ${ZDOTDIR:-$HOME}/.p10k.zsh
