@@ -1,0 +1,29 @@
+#
+# Completions
+#
+mattmc3/ez-compinit
+zsh-users/zsh-completions kind:fpath path:src
+
+#
+# Utilities
+#
+mattmc3/zephyr path:plugins/color
+mattmc3/zephyr path:plugins/directory
+mattmc3/zephyr path:plugins/history
+ohmyzsh/ohmyzsh path:plugins/command-not-found
+ohmyzsh/ohmyzsh path:plugins/extract
+
+#
+# FZF
+#
+unixorn/fzf-zsh-plugin
+Aloxaf/fzf-tab
+
+#
+# Fish-like plugins
+#
+mattmc3/zephyr path:plugins/zfunctions
+mattmc3/zephyr path:plugins/confd
+zdharma-continuum/fast-syntax-highlighting
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search

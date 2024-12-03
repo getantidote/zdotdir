@@ -1,40 +1,43 @@
-#!/bin/zsh
 #
-# .zshrc - Zsh file loaded on interactive shell sessions.
+# Antidote: Zsh plugin manager.
 #
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+export ANTIDOTE_REPO=${XDG_DATA_HOME:-$HOME/.local/share}/antidote
+[[ -d $ANTIDOTE_REPO ]] \
+    || git clone --depth 1 https://github.com/mattmc3/antidote $ANTIDOTE_REPO
 
-# Lazy-load (autoload) Zsh function files from a directory.
-ZFUNCDIR=${ZDOTDIR:-$HOME}/.zfunctions
-fpath=($ZFUNCDIR $fpath)
-autoload -Uz $ZFUNCDIR/*(.:t)
+bundle_file=${ZDOTDIR:-$HOME/.config/zsh}/zsh_plugins
+static_file=${XDG_DATA_HOME:-$HOME/.local/share}/zsh/zsh_plugins.zsh
+[[ -f $bundle_file ]] || touch $bundle_file
 
-# Set any zstyles you might use for configuration.
-[[ ! -f ${ZDOTDIR:-$HOME}/.zstyles ]] || source ${ZDOTDIR:-$HOME}/.zstyles
+# Source Antidote.
+source $ANTIDOTE_REPO/antidote.zsh
 
-# Clone antidote if necessary.
-if [[ ! -d ${ZDOTDIR:-$HOME}/.antidote ]]; then
-  git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-$HOME}/.antidote
-fi
+# Use friendly names with the bundle directory in $ANTIDOTE_HOME.
+zstyle ':antidote:bundle' use-friendly-names    on
+# Set custom bundle file. Default: ${ZDOTDIR:-$HOME}/.zsh_plugins
+zstyle ':antidote:bundle' file                  $bundle_file
+# Set custom static file. Default: ${ZDOTDIR:-$HOME}/.zsh_plugins.zsh
+zstyle ':antidote:static' file                  $static_file
+# Zsh compile everything, static file and all bundles.
+zstyle ':antidote:*'      zcompile              yes
 
-# Create an amazing Zsh config using antidote plugins.
-source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
+#
+# Completions: Set completion options.
+#
+
+zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
+
+#
+# Plugin settings: Set options for various plugins.
+#
+
+export FZF_PATH=${XDG_DATA_HOME:-$HOME/.local/share}/fzf
+
+#
+# Wrap-up
+#
+
+# Initialize plugins statically with ${ZDOTDIR:-$HOME/.config/zsh}/zsh_plugins file.
+# Note: Must be loaded after setting zstyles.
 antidote load
-
-# Source anything in .zshrc.d.
-for _rc in ${ZDOTDIR:-$HOME}/.zshrc.d/*.zsh; do
-  # Ignore tilde files.
-  if [[ $_rc:t != '~'* ]]; then
-    source "$_rc"
-  fi
-done
-unset _rc
-
-# To customize prompt, run `p10k configure` or edit .p10k.zsh.
-[[ ! -f ${ZDOTDIR:-$HOME}/.p10k.zsh ]] || source ${ZDOTDIR:-$HOME}/.p10k.zsh
