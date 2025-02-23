@@ -1,0 +1,10 @@
+{
+  "workbench.externalBrowser": "firefox",
+  "livePreview.customExternalBrowser": "Firefox",
+  "liveServer.settings.CustomBrowser": "firefox",
+  "liveServer.settings.NoBrowser": true,
+  "open-in-browser.default": "firefox",
+  "vscode-edge-devtools.browserFlavor": "Default",
+  "livePreview.openPreviewTarget": "External Browser",
+  "terminal.integrated.defaultProfile.linux": "zsh"
+}
