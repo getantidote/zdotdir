@@ -1,2 +1,2 @@
 (( $+commands[zoxide] )) || return 1
-eval $(zoxide init zsh)
+eval "$(zoxide init zsh)"
